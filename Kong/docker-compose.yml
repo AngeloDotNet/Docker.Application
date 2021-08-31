@@ -1,0 +1,51 @@
+version: '3.7'
+
+networks:
+  lan-network:
+    external:
+      name: docker-lan
+
+services:
+  kong-migration:
+    image: kong:latest
+    command: "kong migrations bootstrap"
+    restart: always
+    networks:
+      - lan-network
+    environment:
+      KONG_DATABASE: postgres
+      KONG_PG_HOST: ip-server-docker
+      KONG_PG_PORT: 5433
+      KONG_PG_USER: user_kong
+      KONG_PG_DATABASE: db_kong
+      KONG_PG_PASSWORD: pass_kong1!
+
+  kong:
+    image: kong:latest
+    hostname: kong
+    container_name: kong
+    restart: always
+    environment:
+      KONG_DATABASE: postgres
+      KONG_PG_HOST: ip-server-docker
+      KONG_PG_PORT: 5433
+      KONG_PG_DATABASE: db_kong
+      KONG_PG_USER: user_kong
+      KONG_PG_PASSWORD: pass_kong1!
+      KONG_PROXY_LISTEN: 0.0.0.0:8000
+      KONG_PROXY_LISTEN_SSL: 0.0.0.0:8443
+      KONG_ADMIN_LISTEN: 0.0.0.0:8001
+      KONG_TRUSTED_IPS: 0.0.0.0/0,::/0
+    depends_on:
+      - kong-migration
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://kong:8001"]
+      interval: 5s
+      timeout: 2s
+      retries: 15
+    networks:
+      - lan-network
+    ports:
+      - 8001:8001
+      - 8000:8000
+      - 8443:8443

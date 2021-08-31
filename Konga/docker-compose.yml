@@ -1,0 +1,29 @@
+version: '3.7'
+
+networks:
+  lan-network:
+    external:
+      name: docker-lan
+
+services:
+  konga-migration:
+    image: pantsel/konga:next
+    command: "-c prepare -a postgres -u postgresql://user_konga:pass_konga1!@ip-server-docker:5434/db_konga"
+    networks:
+      - lan-network 
+    restart: always
+
+  konga:
+    image: pantsel/konga:next
+    container_name: konga
+    restart: always
+    environment:
+      DB_ADAPTER: postgres
+      DB_URI: postgresql://user_konga:pass_konga1!@ip-server-docker:5434/db_konga
+      NODE_ENV: production
+    depends_on:
+      - konga-migration
+    networks:
+      - lan-network
+    ports:
+      - 1337:1337
