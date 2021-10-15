@@ -1,0 +1,24 @@
+version: '3.7'
+
+services:
+  rabbit-mq:
+    container_name: rabbit-mq
+    build: .
+    restart: yes
+    volumes:
+      - /storage/rabbit-mq/files:/var/lib/rabbitmq
+      - /storage/rabbit-mq/logs:/var/log/rabbitmq/log
+    environment:
+      - RABBITMQ_DEFAULT_USER=CHANGE-ME
+      - RABBITMQ_DEFAULT_PASS=CHANGE-ME
+      - RABBITMQ_NODENAME=rabbit@CHANGE-ME
+    ports: 
+      - 5672:5672
+      - 15672:15672
+    networks:
+      - lan-network
+
+networks:
+   lan-network:
+      external:
+         name: docker-lan
