@@ -5,6 +5,7 @@ There are currently the following templates:
 - Kong
 - Konga
 - Rabbit-MQ
+- Redis
 - Ubuntu Server 20.04 - NET Core 3.x
 - Ubuntu Server 20.04 - NET Core 5.x
 
