@@ -1,0 +1,16 @@
+version: '3.7'
+
+services:
+  redis:
+    container_name: redis
+    build: .
+    restart: yes
+    volumes:
+      - /storage/redis/data:/data
+    networks:
+      - lan-network
+
+networks:
+   lan-network:
+      external:
+         name: docker-lan
