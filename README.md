@@ -6,6 +6,7 @@ There are currently the following templates:
 - Konga
 - Rabbit-MQ
 - Redis
+- Postfix (Only SMTP Relay)
 - Ubuntu Server 20.04 - NET Core 3.x
 - Ubuntu Server 20.04 - NET Core 5.x
 
