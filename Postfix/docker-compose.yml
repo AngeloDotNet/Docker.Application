@@ -1,0 +1,25 @@
+version: '3.7'
+
+services:
+  postfix:
+    container_name: postfix
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    environment:
+      - SMTP_SERVER=smtp.example.com 
+      - SMTP_USERNAME=username@example.com 
+      - SMTP_PORT=465 o 587
+      - SMTP_PASSWORD=password 
+      - SERVER_HOSTNAME=hostname
+      - OVERWRITE_FROM="Nome visualizzato" username@example.com
+    ports:
+      - "25:25"
+    networks:
+      - lan-network
+
+networks:
+   lan-network:
+      external:
+         name: docker-lan
