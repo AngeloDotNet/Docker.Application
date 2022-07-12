@@ -8,8 +8,10 @@ There are currently the following templates:
 - Redis
 - Postfix (Only SMTP Relay)
 - Postgres Admin
-- Ubuntu Server 20.04 - NET Core 3.x
-- Ubuntu Server 20.04 - NET Core 5.x
+- Ubuntu Server 20.04 - NET 3.x (Deprecated)
+- Ubuntu Server 20.04 - NET 5.x (Deprecated)
+- Ubuntu Server 21.04 - NET 6.x 
+
 
 ## Network configuration
 The docker-lan network (bridge type) was created with the command: 
