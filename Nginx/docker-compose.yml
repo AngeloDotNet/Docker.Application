@@ -1,0 +1,28 @@
+version: '3.7'
+
+services:
+  nginx:
+    container_name: nginx
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - /storage/CHANGEME/etc/nginx/sites-available:/etc/nginx/sites-available
+      - /storage/CHANGEME/etc/nginx/sites-enabled:/etc/nginx/sites-enabled
+      - /storage/CHANGEME/etc/nginx/streams-available:/etc/nginx/streams-available
+      - /storage/CHANGEME/etc/nginx/streams-enabled:/etc/nginx/streams-enabled
+      - /storage/CHANGEME/letsencrypt:/etc/letsencrypt
+      - /storage/CHANGEME/var/www:/var/www
+    environment: 
+      - TZ=Europe/Rome
+    networks:
+      - lan-network
+
+networks:
+   lan-network:
+      external:
+         name: docker-lan
