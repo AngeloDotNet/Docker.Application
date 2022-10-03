@@ -11,6 +11,7 @@ There are currently the following templates:
 - Nginx
 - Postfix (Only SMTP Relay)
 - Postgres Admin
+- ProFTP (Server FTP)
 - Ubuntu Server 20.04 - NET 3.x (Deprecated)
 - Ubuntu Server 20.04 - NET 5.x (Deprecated)
 - Ubuntu Server 20.04 - NET 6.x
