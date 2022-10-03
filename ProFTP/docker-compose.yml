@@ -37,9 +37,9 @@ services:
       - URL_FTP=CHANGE-ME-WITH-PUBLIC-IP
         ## range porte configurate per ftp passive mode
       - PORT_MIN=4000
-      - PORT_MAX=4010
+      - PORT_MAX=4001
         ## numero di connessioni contemporanee
-      - MAX_INSTANCES=10
+      - MAX_INSTANCES=2
         ## TIMEOUTS
       - TIMEOUT_CONNECTION=600
       - TIMEOUT_IDLE=1200
