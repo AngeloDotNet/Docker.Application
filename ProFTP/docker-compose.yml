@@ -1,0 +1,56 @@
+version: "3.7"
+
+services:
+  proftpd:
+    container_name: proftpd
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+        ####  porte per ftp 
+      - target: 20
+        published: 20
+        protocol: tcp
+        mode: host
+      - target: 21
+        published: 21
+        protocol: tcp
+        mode: host
+        ####  porte per ftp in passive mode
+      - target: 4000
+        published: 4000
+        protocol: tcp
+        mode: host
+      - target: 4001
+        published: 4001
+        protocol: tcp
+        mode: host
+        ####    porta per sftp
+      - target: 2222
+        published: 2422
+        protocol: tcp
+        mode: host
+    environment:
+      - LOGFILE=/dev/stderr
+      - DEBUGLEVEL=4
+      - URL_FTP=CHANGE-ME-WITH-PUBLIC-IP
+        ## range porte configurate per ftp passive mode
+      - PORT_MIN=4000
+      - PORT_MAX=4010
+        ## numero di connessioni contemporanee
+      - MAX_INSTANCES=10
+        ## TIMEOUTS
+      - TIMEOUT_CONNECTION=600
+      - TIMEOUT_IDLE=1200
+    volumes:
+      - /storage/CHANGEME/proftpd/etc:/proftpd/etc
+      - /storage/CHANGEME/proftpd/conf:/proftpd/conf.d
+      - /storage/CHANGEME/proftpd/data:/data
+    networks:
+      - lan-network
+
+networks:
+   lan-network:
+      external:
+         name: docker-lan
