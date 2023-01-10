@@ -1,0 +1,24 @@
+version: '3.7'
+
+services:
+  seq:
+   container_name: seq
+   build:
+     context: .
+     dockerfile: Dockerfile
+   restart: always
+   environment:
+     - ACCEPT_EULA=Y
+     - SEQ_FIRSTRUN_ADMINPASSWORDHASH="CHANGE-ME"
+   volumes:
+     - /storage/CHANGEME:/data
+   networks:
+     - docker_network
+   ports:
+     - 5084:80
+     - 5341:5341
+
+networks:
+   lan-network:
+      external:
+         name: docker-lan
