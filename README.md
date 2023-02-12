@@ -16,8 +16,6 @@ There are currently the following templates:
 - Postgres Admin
 - ProFTP (Server FTP)
 - Seq
-- Ubuntu Server 20.04 - NET 3.x (Deprecated)
-- Ubuntu Server 20.04 - NET 5.x (Deprecated)
 - Ubuntu Server 20.04 - NET 6.x
 - Ubuntu Server 22.04 - NET 6.x (Version 21.04 update)
 
