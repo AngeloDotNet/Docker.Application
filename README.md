@@ -10,6 +10,7 @@ There are currently the following templates:
 - Konga
 - Rabbit-MQ
 - Redis
+- Microsoft SDK - NET 6.x
 - Nginx
 - Postfix (Only SMTP Relay)
 - Postgres Admin
