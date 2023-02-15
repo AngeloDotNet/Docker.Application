@@ -1,0 +1,22 @@
+version: "3.7"
+
+services:
+  vault:
+    image: vault:1.12.3
+    environment:
+      - VAULT_DEV_ROOT_TOKEN_ID=CHANGE-ME
+    cap_add:
+      - IPC_LOCK
+    restart: "always"
+    ports:
+      - 8200:8200
+    volumes:
+      - /storage/CHANGEME/vault/storage/files:/vault/file
+      - /storage/CHANGEME/vault/storage/logs:/vault/logs
+    networks:
+      - lan-network
+
+networks:
+   lan-network:
+     external:
+       name: docker-lan
