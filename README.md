@@ -18,6 +18,7 @@ There are currently the following templates:
 - Seq
 - Ubuntu Server 20.04 - NET 6.x
 - Ubuntu Server 22.04 - NET 6.x (Version 21.04 update)
+- Vault
 
 
 ## Network configuration
