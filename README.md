@@ -20,6 +20,8 @@ There are currently the following templates:
 - Ubuntu Server 22.04 - NET 6.x (Version 21.04 update)
 - Vault
 
+If you like this repository, please drop a ⭐ on Github!
+
 
 ## Network configuration
 
