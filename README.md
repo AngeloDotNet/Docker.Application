@@ -32,7 +32,7 @@ The docker-lan network (bridge type) was created with the command:
 
 ## Application configuration
 
-Regarding the configuration of the admin user (main user) for docker keycloak it is necessary after the docker has started to run the following commands: docker exec <CONTAINER> /opt/jboss/keycloak/bin/add-user-keycloak.sh -u <USERNAME> -p <PASSWORD> and subsequently: docker restart <CONTAINER>, taking care to replace the values indicated between minor and major before executing the commands just mentioned.
+Regarding the configuration of the admin user (main user) for docker keycloak it is necessary after the docker has started to run the following commands: <b>docker exec <CONTAINER> /opt/jboss/keycloak/bin/add-user-keycloak.sh -u USERNAME -p PASSWORD</b> and subsequently: <b>docker restart CONTAINER</b>, taking care to replace the values indicated between minor and major before executing the commands just mentioned.
 
 For the Kong (Postgres 13.1) and Konga (Postgres 9.6) database it is necessary to first create the relative docker database (respecting the version indicated) and then create USER and DATABASE as indicated below.
 
