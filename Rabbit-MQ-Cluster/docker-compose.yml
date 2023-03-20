@@ -1,0 +1,61 @@
+version: '3.7'
+
+services:
+  rabbitmq-1:
+    container_name: rabbitNode1
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: "always"
+    volumes:
+      - /storage/rabbit-mq-node1/files:/var/lib/rabbitmq
+      - /storage/rabbit-mq-node1/logs:/var/log/rabbitmq/log
+    environment:
+      - RABBITMQ_DEFAULT_USER=CHANGE-ME
+      - RABBITMQ_DEFAULT_PASS=CHANGE-ME
+      - RABBITMQ_USE_LONGNAME=true
+      - RABBITMQ_ERLANG_COOKIE="cookie"
+    hostname: node1.rabbit
+    ports: 
+      - "5672:5672"
+      - "15672:15672"
+      - "4369:4369"
+      - "25672:25672"
+      - "35672:35672"
+    extra_hosts: 
+      - "node2.rabbit:192.168.100.201"
+    networks:
+      lan-network:
+        ipv4_address: 192.168.100.200
+
+  rabbitmq-2:
+    container_name: rabbitNode2
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: "always"
+    volumes:
+      - /storage/rabbit-mq-node2/files:/var/lib/rabbitmq
+      - /storage/rabbit-mq-node2/logs:/var/log/rabbitmq/log
+    environment:
+      - RABBITMQ_DEFAULT_USER=CHANGE-ME
+      - RABBITMQ_DEFAULT_PASS=CHANGE-ME
+      - RABBITMQ_USE_LONGNAME=true
+      - RABBITMQ_ERLANG_COOKIE="cookie"
+    hostname: node2.rabbit
+    ports:
+      - "5673:5672"
+      - "15673:15672"
+      - "4370:4369"
+      - "25673:25672"
+      - "35673:35672"
+    extra_hosts: 
+      - "node1.rabbit:192.168.100.200"
+    networks:
+      lan-network:
+        ipv4_address: 192.168.100.201
+
+networks:
+   lan-network:
+     external:
+       name: docker-lan
