@@ -9,6 +9,7 @@ There are currently the following templates:
 - Kong
 - Konga
 - Rabbit-MQ
+- Rabbit-MQ (2-node cluster mode)
 - Redis
 - Microsoft SDK - NET 6.x
 - Nginx
@@ -36,7 +37,13 @@ Regarding the configuration of the admin user (main user) for docker keycloak it
 
 For the Kong (Postgres 13.1) and Konga (Postgres 9.6) database it is necessary to first create the relative docker database (respecting the version indicated) and then create USER and DATABASE as indicated below.
 
-For the Postgres Admin before starting the docker it is necessary to set the necessary permissions on the volume bind /var/lib/pgadmin via the command: chown -R 5050: 5050 var/lib/pgadmin
+For the Postgres Admin before starting the docker it is necessary to set the necessary permissions on the volume bind /var/lib/pgadmin via the command: <b>chown -R 5050: 5050 var/lib/pgadmin</b>
+
+For RabbitMQ (2-node cluster mode), after the two related dockers have been started, it is necessary to terminate the cluster configuration using these commands:
+- docker exec rabbitNode2 rabbitmqctl stop_app
+- docker exec rabbitNode2 rabbitmqctl join_cluster rabbit@node1.rabbit
+- docker exec rabbitNode2 rabbitmqctl start_app
+- docker exec rabbitNode1 rabbitmqctl set_policy ha "." '{"ha-mode":"all"}'
 
 
 ### Important
