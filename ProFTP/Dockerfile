@@ -8,4 +8,4 @@ COPY ./root /
 RUN chmod 600 /etc/ssh/ssh_host*
 
 RUN ln -fs /proftpd/etc/proftpd.conf /etc/proftpd/proftpd.conf
-CMD	["sh", "-c","chmod 440 /proftpd/etc/ftpd.group; chmod 440 /proftpd/etc/ftpd.passwd ; proftpd --nodaemon"]
+CMD ["sh", "-c","chmod 440 /proftpd/etc/ftpd.group; chmod 440 /proftpd/etc/ftpd.passwd ; proftpd --nodaemon"]
