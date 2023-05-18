@@ -44,6 +44,8 @@ For RabbitMQ (2-node cluster mode), after the two related dockers have been star
 - docker exec rabbitNode2 rabbitmqctl join_cluster rabbit@node1.rabbit
 - docker exec rabbitNode2 rabbitmqctl start_app
 - docker exec rabbitNode1 rabbitmqctl set_policy ha "." '{"ha-mode":"all"}'
+  
+For SEQ (docker version) the first boot occurs without any form of active login. After the docker is active, navigate to the SETTINGS > USERS section to enable authentication to access the dashboard.
 
 
 ### Important
