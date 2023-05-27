@@ -1,0 +1,38 @@
+version: '3.7'
+
+services:
+  elasticsearch:
+    container_name: elastic
+    build:
+      context: .
+      dockerfile: Elastic/Dockerfile
+    ports:
+      - 9200:9200
+    volumes:
+      - /storage/CHANGEME/data:/usr/share/elasticsearch/data
+    environment:
+      - xpack.monitoring.enabled=true
+      - xpack.watcher.enabled=false
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - discovery.type=single-node
+    networks:
+      - lan-network
+
+  kibana:
+    container_name: kibana
+    build:
+      context: .
+      dockerfile: Kibana/Dockerfile
+    ports:
+      - 5601:5601
+    depends_on:
+      - elasticsearch
+    environment:
+      - ELASTICSEARCH_URL=http://localhost:9200
+    networks:
+      - lan-network
+
+networks:
+   lan-network:
+      external:
+         name: docker-lan
