@@ -47,6 +47,7 @@ For RabbitMQ (2-node cluster mode), after the two related dockers have been star
   
 For SEQ (docker version) the first boot occurs without any form of active login. After the docker is active, navigate to the SETTINGS > USERS section to enable authentication to access the dashboard.
 
+For ElasticSearch before starting the docker you need to run the following command <b>sudo chown -R 1000:1000 data/</b> where the data/ folder is the volume folder indicated in the elastic compose docker.
 
 ### Important
 
