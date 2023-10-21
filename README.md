@@ -6,6 +6,7 @@ There are currently the following templates:
 
 - Event Store
 - KeyCloak
+- Grafana & Prometheus
 - Kong
 - Konga
 - Rabbit-MQ
