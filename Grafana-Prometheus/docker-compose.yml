@@ -1,0 +1,34 @@
+version: '3.7'
+
+services:
+  prometheus:
+    container_name: prometheus
+    build:
+      context: .
+      dockerfile: Prometheus/Dockerfile
+    ports:
+      - 30090:9090
+    environment:
+      - TZ=UTC
+    networks:
+      - lan-network
+    volumes:
+      - /storage/CHANGEME/prometheus.yml:/etc/prometheus/prometheus.yml
+
+  grafana:
+    container_name: grafana
+    build:
+      context: .
+      dockerfile: Grafana/Dockerfile
+    user: '0'
+    ports:
+      - 30091:3000
+    networks:
+      - lan-network
+    volumes:
+      - /storage/CHANGEME/data:/var/lib/grafana
+
+networks:
+   lan-network:
+      external:
+         name: docker-lan
