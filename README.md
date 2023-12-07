@@ -36,19 +36,38 @@ The docker-lan network (bridge type) was created with the command:
 
 Regarding the configuration of the admin user (main user) for docker keycloak it is necessary after the docker has started to run the following commands: <b>docker exec <CONTAINER> /opt/jboss/keycloak/bin/add-user-keycloak.sh -u USERNAME -p PASSWORD</b> and subsequently: <b>docker restart CONTAINER</b>, taking care to replace the values indicated between minor and major before executing the commands just mentioned.
 
+---
+
 For the Kong (Postgres 13.1) and Konga (Postgres 9.6) database it is necessary to first create the relative docker database (respecting the version indicated) and then create USER and DATABASE as indicated below.
+
+---
 
 For the Postgres Admin before starting the docker it is necessary to set the necessary permissions on the volume bind /var/lib/pgadmin via the command: <b>chown -R 5050: 5050 var/lib/pgadmin</b>
 
+---
+
 For RabbitMQ (2-node cluster mode), after the two related dockers have been started, it is necessary to terminate the cluster configuration using these commands:
+
 - docker exec rabbitNode2 rabbitmqctl stop_app
 - docker exec rabbitNode2 rabbitmqctl join_cluster rabbit@node1.rabbit
 - docker exec rabbitNode2 rabbitmqctl start_app
 - docker exec rabbitNode1 rabbitmqctl set_policy ha "." '{"ha-mode":"all"}'
 
->**Nota:** Where ha is the name of the policy and the "." (dot) is the pattern and ha-mode set to "all" indicates that all queues must be high available. And to check the cluster status use the command **docker exec rabbitNode1 rabbitmqctl cluster_status**
-  
+**Note:** Where ha is the name of the policy and the "." (dot) is the pattern and ha-mode set to "all" indicates that all queues must be high available. And to check the cluster status use the command **docker exec rabbitNode1 rabbitmqctl cluster_status**
+
+To ensure that two nodes can belong to the same cluster, it is necessary to ensure that certain ports are accessible, in particular:
+
+- 4369: epdm (ERLANG PORT MAPPER DAEMON), a peer discovery service, used by RabbitMQ nodes and CLI tools;
+- 5672: port used by the AMQP protocol;
+- 25672: used for communication between nodes and with the CLI;
+- 35672-35682: used by CLI tools for communication with nodes;
+- 15672: used for example for the UI management plugin.
+
+---
+
 For SEQ (docker version) the first boot occurs without any form of active login. After the docker is active, navigate to the SETTINGS > USERS section to enable authentication to access the dashboard.
+
+---
 
 For ElasticSearch before starting the docker you need to run the following command **sudo chown -R 1000:1000 data/** where the data/ folder is the volume folder indicated in the elastic compose docker.
 
