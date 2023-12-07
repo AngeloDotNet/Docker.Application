@@ -45,10 +45,12 @@ For RabbitMQ (2-node cluster mode), after the two related dockers have been star
 - docker exec rabbitNode2 rabbitmqctl join_cluster rabbit@node1.rabbit
 - docker exec rabbitNode2 rabbitmqctl start_app
 - docker exec rabbitNode1 rabbitmqctl set_policy ha "." '{"ha-mode":"all"}'
+
+>**Nota:** Where ha is the name of the policy and the "." (dot) is the pattern and ha-mode set to "all" indicates that all queues must be high available. And to check the cluster status use the command **docker exec rabbitNode1 rabbitmqctl cluster_status**
   
 For SEQ (docker version) the first boot occurs without any form of active login. After the docker is active, navigate to the SETTINGS > USERS section to enable authentication to access the dashboard.
 
-For ElasticSearch before starting the docker you need to run the following command <b>sudo chown -R 1000:1000 data/</b> where the data/ folder is the volume folder indicated in the elastic compose docker.
+For ElasticSearch before starting the docker you need to run the following command **sudo chown -R 1000:1000 data/** where the data/ folder is the volume folder indicated in the elastic compose docker.
 
 ### Important
 
