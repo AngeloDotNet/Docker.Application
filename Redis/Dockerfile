@@ -1,4 +1,3 @@
-#FROM redis:6.2
 FROM redis:7.0.12
 
 ENV DEBIAN_FRONTEND=noninteractive
