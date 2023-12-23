@@ -1,0 +1,21 @@
+version: '3.7'
+
+services:
+  vault-warden:
+    container_name: vault
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: "always"
+    ports:
+      - 8300:80
+      # - 3012:3012
+    volumes:
+      - /storage/CHANGEME/data:/data
+    networks:
+      - lan-network
+
+networks:
+   lan-network:
+     external:
+       name: docker-lan
