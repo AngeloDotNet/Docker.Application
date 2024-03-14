@@ -1,4 +1,5 @@
-FROM rabbitmq:3.12.10-management
+FROM rabbitmq:3.13.0-management
+# FROM rabbitmq:3.12.10-management
 
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update
