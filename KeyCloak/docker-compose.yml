@@ -1,35 +1,22 @@
 version: '3.7'
 
 services:
-  postgres:
-    image: postgres:13.2
-    container_name: keycloak-db
+  keycloak:
+    container_name: keycloak-app
+    build: .
     restart: always
     environment:
-      POSTGRES_DB: ${POSTGRESQL_DB}
-      POSTGRES_USER: ${POSTGRESQL_USER}
-      POSTGRES_PASSWORD: ${POSTGRESQL_PASS}
-    volumes:
-     - /storage/CHANGEME:/var/lib/postgresql/data
-    networks:
-      - lan-network
-    ports:
-     - 5432:5432
-
-  keycloak:
-    depends_on:
-      - postgres
-    container_name: keycloak-app
-    environment:
-      DB_VENDOR: postgres
-      DB_ADDR: postgres
-      DB_DATABASE: ${POSTGRESQL_DB}
-      DB_USER: ${POSTGRESQL_USER}
-      DB_PASSWORD: ${POSTGRESQL_PASS}
-    image: jboss/keycloak:${KEYCLOAK_VERSION}
+      KEYCLOAK_ADMIN_USER: ${KEYCLOAK_ADMIN_USERNAME}
+      KEYCLOAK_ADMIN_PASSWORD: ${KEYCLOAK_ADMIN_PASSWORD}
+      KEYCLOAK_DATABASE_HOST: ${POSTGRESQL_HOST}
+      KEYCLOAK_DATABASE_PORT: ${POSTGRESQL_PORT}
+      KEYCLOAK_DATABASE_NAME: ${POSTGRESQL_DATABASE_NAME}
+      KEYCLOAK_DATABASE_USER: ${POSTGRESQL_DATABASE_USERNAME}
+      KEYCLOAK_DATABASE_PASSWORD: ${POSTGRESQL_DATABASE_PASSWORD}
+      KEYCLOAK_PRODUCTION: "true"
+      KEYCLOAK_ENABLE_HTTPS: "false"
     ports:
       - "8080:8080"
-    restart: always
     networks:
       - lan-network
 
