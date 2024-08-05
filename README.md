@@ -13,6 +13,7 @@ There are currently the following templates:
 - Rabbit-MQ (2-node cluster mode)
 - Redis
 - Microsoft SDK - NET 6.x
+- Microsoft SDK - NET 8.x
 - Nginx
 - Postfix (Only SMTP Relay)
 - Postgres Admin
@@ -34,7 +35,9 @@ The docker-lan network (bridge type) was created with the command:
 
 ## Application configuration
 
-Regarding the configuration of the admin user (main user) for docker keycloak it is necessary after the docker has started to run the following commands: <b>docker exec <CONTAINER> /opt/jboss/keycloak/bin/add-user-keycloak.sh -u USERNAME -p PASSWORD</b> and subsequently: <b>docker restart CONTAINER</b>, taking care to replace the values indicated between minor and major before executing the commands just mentioned.
+After starting the KeyCloak docker for the first time, if you want to use it in HTTP mode and not in the standard HTTPS mode, you need to change the value of the SSL_REQUIRED column to NONE in the relevant database, REALM table, then restart the docker.
+
+**Note:** KeyCloak version 25.0.2 requires a postgres version 16 database.
 
 ---
 
