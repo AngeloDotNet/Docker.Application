@@ -1,1 +1,1 @@
-FROM juanluisbaptiste/postfix
+FROM juanluisbaptiste/postfix:1.7.1
