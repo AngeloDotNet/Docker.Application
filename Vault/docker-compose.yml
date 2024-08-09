@@ -2,7 +2,8 @@ version: "3.7"
 
 services:
   vault:
-    image: vault:1.12.3
+    #image: vault:1.12.3
+    image: vault:1.13.3
     environment:
       - VAULT_DEV_ROOT_TOKEN_ID=CHANGE-ME
     cap_add:
