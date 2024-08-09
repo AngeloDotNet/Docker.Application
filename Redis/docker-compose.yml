@@ -4,7 +4,9 @@ services:
   redis:
     container_name: redis
     build: .
-    restart: yes
+    restart: "always"
+    ports:
+      - 6379:6379
     volumes:
       - /storage/redis/data:/data
     networks:
