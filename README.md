@@ -4,34 +4,35 @@ There are currently the following templates:
 
 ## Application
 
+- ElasticSearch
 - Event Store
-- KeyCloak
 - Grafana & Prometheus
+- KeyCloak
 - Kong
 - Konga
-- Rabbit-MQ
-- Rabbit-MQ (2-node cluster mode)
-- Redis
 - Microsoft SDK - NET 6.x
 - Microsoft SDK - NET 8.x
 - Nginx
+- OwnCloud
 - Postfix (Only SMTP Relay)
 - Postgres Admin
 - ProFTP (Server FTP)
+- Rabbit-MQ
+- Rabbit-MQ (2-node cluster mode)
+- Redis
 - Seq
 - Ubuntu Server 20.04 - NET 6.x
-- Ubuntu Server 22.04 - NET 6.x (Version 21.04 update)
+- Ubuntu Server 22.04 - NET 6.x
 - Vault
+- Vault Warden
 
 If you like this repository, please drop a ⭐ on Github!
-
 
 ## Network configuration
 
 The docker-lan network (bridge type) was created with the command: 
 
 > docker network create --driver=bridge --subnet=192.168.100.0/24 docker-lan
-
 
 ## Application configuration
 
@@ -78,6 +79,6 @@ For ElasticSearch before starting the docker you need to run the following comma
 
 Before starting the related Kong and Konga dockers, modify the USERNAME, PASSWORD and DATABASE NAME indicated in the relevant dockers and compose with the same data used in the commands previously used to create USER and DATABASE.
 
-Also change the IP-SERVER-DOCKER parameter by replacing it with the ip address of the server hosting the dockers. 
+Also change the IP-SERVER-DOCKER parameter by replacing it with the ip address of the server hosting the dockers.
 
 The dockers kong-migration and konga-migration, present in the docker compose of Kong and Konga, are used only for the first time to create the database structures for the corresponding services.
