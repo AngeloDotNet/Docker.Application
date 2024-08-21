@@ -2,10 +2,8 @@ version: '3.7'
 
 services:
   vault-warden:
-    container_name: vault
-    build:
-      context: .
-      dockerfile: Dockerfile
+    container_name: vault-warden
+    build: .
     restart: "always"
     ports:
       - 8300:80
