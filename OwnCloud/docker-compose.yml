@@ -1,0 +1,20 @@
+version: '3.7'
+
+services:
+  owncloud:
+    container_name: owncloud
+    build: .
+    restart: "always"
+    environment:
+      - OWNCLOUD_TRUSTED_DOMAINS: "my-first-domain.com, my-second-domain.com"
+    ports:
+      - 8080:8080
+    volumes:
+      - /storage/CHANGEME/data:/mnt/data
+    networks:
+      - lan-network
+
+networks:
+   lan-network:
+     external:
+       name: docker-lan
