@@ -8,13 +8,15 @@ services:
       dockerfile: Elastic/Dockerfile
     ports:
       - 9200:9200
+      - 9300:9300
     volumes:
       - /storage/CHANGEME/data:/usr/share/elasticsearch/data
     environment:
-      - xpack.monitoring.enabled=true
-      - xpack.watcher.enabled=false
-      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
       - discovery.type=single-node
+      - xpack.security.enabled=false
+      # - xpack.monitoring.enabled=true
+      # - xpack.watcher.enabled=false
+      # - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
     networks:
       - lan-network
 
@@ -25,10 +27,10 @@ services:
       dockerfile: Kibana/Dockerfile
     ports:
       - 5601:5601
+    environment:
+      - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
     depends_on:
       - elasticsearch
-    environment:
-      - ELASTICSEARCH_URL=http://localhost:9200
     networks:
       - lan-network
 
