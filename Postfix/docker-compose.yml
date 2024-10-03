@@ -3,9 +3,7 @@ version: '3.7'
 services:
   postfix:
     container_name: postfix
-    build:
-      context: .
-      dockerfile: Dockerfile
+    build: .
     restart: always
     environment:
       - SMTP_SERVER=smtp.example.com 
