@@ -3,9 +3,7 @@ version: "3.7"
 services:
   proftpd:
     container_name: proftpd
-    build:
-      context: .
-      dockerfile: Dockerfile
+    build: .
     restart: always
     ports:
         ####  porte per ftp 
