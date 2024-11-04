@@ -1,21 +1,20 @@
-version: "3.7"
+version: '3.7'
 
 services:
-  vault:
-    container_name: vault
+  hashi-vault:
+    container_name: hashi-vault
     build: .
     restart: "always"
-    environment:
-      - VAULT_DEV_ROOT_TOKEN_ID=CHANGE-ME
-    cap_add:
-      - IPC_LOCK
+    volumes:
+      - /docker/storage/storage-vault/files:/vault/file/:rw
+      - /docker/storage/storage-vault/logs:/vault/logs/:rw
+      - /docker/storage/storage-vault/data:/vault/data/:rw
+      - /docker/storage/storage-vault/config:/vault/config/:rw
     ports:
       - 8200:8200
-    volumes:
-      - /storage/CHANGEME/vault/storage/files:/vault/file
-      - /storage/CHANGEME/vault/storage/logs:/vault/logs
-    networks:
-      - lan-network
+    cap_add:
+      - IPC_LOCK
+    entrypoint: vault server -config /vault/config/config.hcl
 
 networks:
    lan-network:
