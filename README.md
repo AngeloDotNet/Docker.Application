@@ -21,8 +21,8 @@ There are currently the following templates:
 - Rabbit-MQ (2-node cluster mode)
 - Redis
 - Seq
-- Ubuntu Server 20.04 - NET 6.x
 - Ubuntu Server 22.04 - NET 6.x
+- Ubuntu Server 22.04 - NET 8.x
 - Vault
 - Vault Warden
 
