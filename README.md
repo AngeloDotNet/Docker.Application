@@ -38,7 +38,7 @@ The docker-lan network (bridge type) was created with the command:
 
 After starting the KeyCloak docker for the first time, if you want to use it in HTTP mode and not in the standard HTTPS mode, you need to change the value of the SSL_REQUIRED column to NONE in the relevant database, REALM table, then restart the docker.
 
-**Note:** KeyCloak version 25.0.2 requires a postgres version 16 database.
+**Note:** KeyCloak versions 25.0.2 and 26.1.3 require a PostgreSQL version 16 database.
 
 ---
 
