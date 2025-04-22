@@ -4,24 +4,24 @@ There are currently the following templates:
 
 ## Application
 
-- ElasticSearch
+- ElasticSearch (Updated)
 - Event Store
 - Grafana & Prometheus
 - KeyCloak
 - Kong
 - Konga
-- Microsoft SDK - NET 6.x
+- Microsoft SDK - NET 6.x (Rimove the old version of the SDK)
 - Microsoft SDK - NET 8.x
-- Nginx
-- OwnCloud
+- Nginx (Updated)
+- OwnCloud (Updated)
 - Postfix (Only SMTP Relay)
 - Postgres Admin
 - ProFTP (Server FTP)
-- Rabbit-MQ
-- Rabbit-MQ (2-node cluster mode)
+- Rabbit-MQ (Updated)
+- Rabbit-MQ (2-node cluster mode) (Updated)
 - Redis
 - Seq
-- Ubuntu Server 22.04 - NET 6.x
+- Ubuntu Server 22.04 - NET 6.x (Rimove the old version of the SDK)
 - Ubuntu Server 22.04 - NET 8.x
 - Vault
 - Vault Warden
