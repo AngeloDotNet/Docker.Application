@@ -1,2 +1,2 @@
-FROM vaultwarden/server:1.33.2
-#FROM vaultwarden/server:1.32.7
+FROM vaultwarden/server:1.34.3
+#FROM vaultwarden/server:1.34.1
