@@ -1,5 +1,5 @@
-FROM redis:7.4.2
-#FROM redis:7.4.0
+FROM redis:7.4.5
+#FROM redis:7.4.2
 
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update
