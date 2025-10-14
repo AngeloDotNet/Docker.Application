@@ -1,0 +1,32 @@
+version: '3.7'
+
+services:
+  minio-server:
+   container_name: minio-server
+   build:
+     context: .
+     dockerfile: Dockerfile
+   restart: always
+   volumes:
+     - /storage/CHANGEME:/data
+     - /storage/CHANGEME:/root/.minio
+   environment:
+      - MINIO_ROOT_USER=CHANGE-ME
+      - MINIO_ROOT_PASSWORD=CHANGE-ME
+   command: server /data --console-address ":9001"
+   networks:
+     - lan-network
+   ports:
+     - 9000:9000
+     - 9001:9001
+
+  minio-client:
+    container_name: minio-client
+    image: minio/mc
+    networks:
+      - lan-network
+
+networks:
+   lan-network:
+      external:
+         name: docker-lan
