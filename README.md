@@ -10,21 +10,19 @@ There are currently the following templates:
 - KeyCloak
 - Kong
 - Konga
-- Microsoft SDK - NET 6.x (Rimove the old version of the SDK)
 - Microsoft SDK - NET 8.x
 - Nginx (Updated)
 - OwnCloud (Updated)
-- Postfix (Only SMTP Relay)
-- Postgres Admin
+- Postfix (Only SMTP Relay - Updated)
+- Postgres Admin (Updated)
 - ProFTP (Server FTP)
 - Rabbit-MQ (Updated)
 - Rabbit-MQ (2-node cluster mode) (Updated)
-- Redis
-- Seq
-- Ubuntu Server 22.04 - NET 6.x (Rimove the old version of the SDK)
-- Ubuntu Server 22.04 - NET 8.x
+- Redis (Updated)
+- Seq (Updated)
+- Ubuntu Server 25.04 - NET 8.x (New release)
 - Vault
-- Vault Warden
+- Vault Warden (Updated)
 
 If you like this repository, please drop a ⭐ on Github!
 
@@ -47,6 +45,30 @@ For the Kong (Postgres 13.1) and Konga (Postgres 9.6) database it is necessary t
 ---
 
 For the Postgres Admin before starting the docker it is necessary to set the necessary permissions on the volume bind /var/lib/pgadmin via the command: <b>chown -R 5050: 5050 var/lib/pgadmin</b>
+
+---
+
+For MinIO storage if you are using a localhost port configuration (example: 127.0.0.1:9000 and 127.0.0.1:9001), you will need to add these lines to the relevant nginx file in sites-enabled.
+
+server {
+   root /var/www/html/;
+   index index.html index.htm;
+
+   server_name minio.example.com; //To be replaced with the real server
+
+   location / {
+     proxy_set_header X-Real-IP $remote_addr;
+     proxy_set_header X-Forwarded-For $remote_addr;
+     proxy_set_header Host $host;
+  
+     proxy_http_version 1.1;
+     proxy_set_header Upgrade $http_upgrade;
+     proxy_set_header Connection "upgrade";
+     proxy_read_timeout 86400;
+ 
+     proxy_pass http://127.0.0.1:9001;
+   }
+}
 
 ---
 
