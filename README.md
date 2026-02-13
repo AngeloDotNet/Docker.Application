@@ -4,25 +4,27 @@ There are currently the following templates:
 
 ## Application
 
-- ElasticSearch (Updated)
+- ElasticSearch
 - Event Store
 - Grafana & Prometheus
 - KeyCloak
 - Kong
 - Konga
 - Microsoft SDK - NET 8.x
+- Microsoft SDK - NET 9.x
+- Microsoft SDK - NET 10.x
 - Nginx (Updated)
 - OwnCloud (Updated)
-- Postfix (Only SMTP Relay - Updated)
+- Postfix (Updated)
 - Postgres Admin (Updated)
 - ProFTP (Server FTP)
 - Rabbit-MQ (Updated)
 - Rabbit-MQ (2-node cluster mode) (Updated)
 - Redis (Updated)
-- Seq (Updated)
-- Ubuntu Server 25.04 - NET 8.x (New release)
+- Seq
+- Storage MinIO (Updated)
 - Vault
-- Vault Warden (Updated)
+- Vault Warden
 
 If you like this repository, please drop a ⭐ on Github!
 
@@ -79,7 +81,8 @@ For RabbitMQ (2-node cluster mode), after the two related dockers have been star
 - docker exec rabbitNode2 rabbitmqctl start_app
 - docker exec rabbitNode1 rabbitmqctl set_policy ha "." '{"ha-mode":"all"}'
 
-**Note:** Where ha is the name of the policy and the "." (dot) is the pattern and ha-mode set to "all" indicates that all queues must be high available. And to check the cluster status use the command **docker exec rabbitNode1 rabbitmqctl cluster_status**
+**Note:** Where ha is the name of the policy and the "." (dot) is the pattern and ha-mode set to "all" indicates that all queues must be high available.
+To check the cluster status use the command **docker exec rabbitNode1 rabbitmqctl cluster_status**
 
 To ensure that two nodes can belong to the same cluster, it is necessary to ensure that certain ports are accessible, in particular:
 
