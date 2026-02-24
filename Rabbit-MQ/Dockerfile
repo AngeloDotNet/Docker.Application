@@ -1,4 +1,4 @@
-FROM rabbitmq:4.2.3-management
+FROM rabbitmq:4.2.4-management
 #FROM rabbitmq:4.2.2-management
 
 ENV DEBIAN_FRONTEND=noninteractive
