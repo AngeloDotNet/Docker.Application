@@ -7,22 +7,22 @@ There are currently the following templates:
 - ElasticSearch
 - Event Store
 - Grafana & Prometheus
-- KeyCloak
+- KeyCloak (Updated)
 - Kong
 - Konga
 - Microsoft SDK - NET 8.x
 - Microsoft SDK - NET 9.x
 - Microsoft SDK - NET 10.x
-- Nginx (Updated)
-- OwnCloud (Updated)
-- Postfix (Updated)
-- Postgres Admin (Updated)
+- Nginx
+- OwnCloud
+- Postfix
+- Postgres Admin
 - ProFTP (Server FTP)
-- Rabbit-MQ (Updated)
-- Rabbit-MQ (2-node cluster mode) (Updated)
-- Redis (Updated)
+- Rabbit-MQ
+- Rabbit-MQ (2-node cluster mode)
+- Redis
 - Seq
-- Storage MinIO (Updated)
+- Storage MinIO
 - Vault
 - Vault Warden
 
