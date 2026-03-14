@@ -6,15 +6,15 @@ services:
     build: .
     restart: always
     environment:
-      KEYCLOAK_ADMIN_USER: ${KEYCLOAK_ADMIN_USERNAME}
-      KEYCLOAK_ADMIN_PASSWORD: ${KEYCLOAK_ADMIN_PASSWORD}
-      KEYCLOAK_DATABASE_HOST: ${POSTGRESQL_HOST}
-      KEYCLOAK_DATABASE_PORT: ${POSTGRESQL_PORT}
-      KEYCLOAK_DATABASE_NAME: ${POSTGRESQL_DATABASE_NAME}
-      KEYCLOAK_DATABASE_USER: ${POSTGRESQL_DATABASE_USERNAME}
-      KEYCLOAK_DATABASE_PASSWORD: ${POSTGRESQL_DATABASE_PASSWORD}
-      KEYCLOAK_PRODUCTION: "true"
-      KEYCLOAK_ENABLE_HTTPS: "false"
+      - KEYCLOAK_ADMIN=admin
+      - KEYCLOAK_ADMIN_PASSWORD=YourStr0ngPassw0rd
+      - KC_CACHE=local
+      - KC_HTTP_ENABLED=true
+      - KC_HOSTNAME_STRICT=false
+      - KC_DB=postgres
+      - KC_DB_URL=jdbc:postgresql://postgres-docker-hostname:5432/keycloak
+      - KC_DB_USERNAME=postgres
+      - KC_DB_PASSWORD=postgres
     ports:
       - "8080:8080"
     networks:
