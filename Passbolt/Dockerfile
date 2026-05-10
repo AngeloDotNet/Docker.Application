@@ -1,0 +1,1 @@
+FROM passbolt/passbolt:5.11.0-1-ce

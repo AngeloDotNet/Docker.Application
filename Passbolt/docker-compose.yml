@@ -1,0 +1,28 @@
+version: '3.7'
+
+services:
+  passbolt-ce:
+    container_name: passbolt
+    build:
+     context: .
+     dockerfile: Dockerfile
+    restart: always
+    environment:
+      - DATASOURCES_DEFAULT_HOST=mysql-host
+      - DATASOURCES_DEFAULT_USERNAME=mysql-username
+      - DATASOURCES_DEFAULT_PASSWORD=mysql-password
+      - DATASOURCES_DEFAULT_DATABASE=passbolt
+      # Starting with HTTP
+      #- APP_FULL_BASE_URL=http://mydomain.com
+      # Starting with HTTPS
+      - APP_FULL_BASE_URL=https://mydomain.com
+    ports:
+      - 8350:80
+      - 8343:443
+    networks:
+      - network
+
+networks:
+   lan-network:
+      external:
+         name: docker-lan
