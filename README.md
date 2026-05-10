@@ -8,7 +8,7 @@ There are currently the following templates:
 - ElasticSearch
 - Event Store
 - Grafana & Prometheus
-- KeyCloak (Updated)
+- KeyCloak
 - Kong
 - Konga
 - Microsoft SDK - NET 8.x
@@ -16,6 +16,7 @@ There are currently the following templates:
 - Microsoft SDK - NET 10.x
 - Nginx
 - OwnCloud
+- Passbolt
 - Postfix
 - Postgres Admin
 - ProFTP (Server FTP)
@@ -40,6 +41,16 @@ The docker-lan network (bridge type) was created with the command:
 For Baget, you can choose whether to use SQLite or SQLServer as your database.
 
 Based on your preferences, create a copy of the relevant .env file and rename it baget.env as indicated in docker-compose.yml, or adjust the latter's configuration.
+
+---
+
+To create the admin user (first login) in Passbolt
+
+docker exec passbolt su -m -c "bin/cake passbolt register_user -u <user_email> -f <user_name> -l <user_surname> -r admin" -s /bin/sh www-data
+
+If the mail server is not configured but the user needs to be confirmed
+
+docker exec passbolt su -m -c "bin/cake passbolt recover_user -c -u <user_email>" -s /bin/sh www-data
 
 ---
 
