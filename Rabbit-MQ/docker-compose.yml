@@ -13,7 +13,11 @@ services:
       - RABBITMQ_DEFAULT_PASS=CHANGE-ME
       - RABBITMQ_NODENAME=rabbit@CHANGE-ME
     ports: 
-      - 5672:5672
+      # - 5672:5672
+      # - 15672:15672
+      # AMQP protocol port
+      - 5672:5672     
+      # HTTP management UI
       - 15672:15672
     networks:
       - lan-network
