@@ -44,7 +44,7 @@ Based on your preferences, create a copy of the relevant .env file and rename it
 
 ---
 
-To create the admin user (first login) in Passbolt
+For Passbolt, to create the admin user (first login)
 
 docker exec passbolt su -m -c "bin/cake passbolt register_user -u <user_email> -f <user_name> -l <user_surname> -r admin" -s /bin/sh www-data
 
