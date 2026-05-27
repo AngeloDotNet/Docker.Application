@@ -1,5 +1,5 @@
-FROM nginx:1.29.7
-#FROM nginx:1.29.4
+FROM nginx:1.31.1
+#FROM nginx:1.29.7
 
 COPY /root_image /
 
